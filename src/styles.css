@@ -42,7 +42,7 @@ button:hover {
 /* header  */
 
 header {
-    background:#234465 
+    background: #234465
 }
 
 header ul {
@@ -92,13 +92,13 @@ header a {
 }
 
 .logo-wrap {
-display: flex;
-align-items: center;
-justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0.5em 0;
 }
 
-.logo-wrap > img {
+.logo-wrap>img {
     height: 15vh;
     margin-right: 3vw;
     margin-left: -4vw;
@@ -116,8 +116,8 @@ justify-content: center;
 /* mini-navbar */
 
 .mini-navbar ul {
-  margin-bottom: 60px;
-  margin-right: -50px;
+    margin-bottom: 60px;
+    margin-right: -50px;
 }
 
 .mini-navbar ul li {
@@ -128,10 +128,12 @@ justify-content: center;
     border-radius: 20px;
     text-shadow: 1px 1px rgb(95, 94, 94);
 }
-.mini-navbar ul li:hover{
+
+.mini-navbar ul li:hover {
     scale: 1.1;
-    
+
 }
+
 /* main  */
 
 main {
@@ -149,10 +151,12 @@ main {
     font-weight: bold;
 }
 
-.theme-container h2, p {
+.theme-container h2,
+p {
     padding: 0.3em 0 0.2em;
     margin: 0;
 }
+
 .theme-container h2 {
     padding: 0.3em 0 0.2em;
     margin: 0;
@@ -161,6 +165,7 @@ main {
     text-shadow: 1px 1px rgb(121, 117, 117);
     border-radius: 10px;
 }
+
 .theme-name-wrapper {
     display: flex;
     justify-content: space-between;
@@ -171,7 +176,7 @@ main {
     font-size: 0.8em;
     margin-top: 1em;
     background-color: #ff9d00d7;
-    
+
 }
 
 .theme-title {
@@ -250,7 +255,7 @@ aside {
     border-bottom: none;
     border-radius: 0.3rem;
     font-size: 1.2rem;
-    background-color:#306085;
+    background-color: #306085;
     padding-left: 0.5rem;
     color: white;
     text-shadow: 1px 1px rgb(43, 42, 42);
@@ -272,13 +277,12 @@ aside {
 /* footer  */
 
 footer {
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-background-color:#234465;
-height: 8vh;
-color: white;
-text-shadow: 1px 1px black;
-text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #234465;
+    height: 8vh;
+    color: white;
+    text-shadow: 1px 1px black;
+    text-align: center;
 }
-
