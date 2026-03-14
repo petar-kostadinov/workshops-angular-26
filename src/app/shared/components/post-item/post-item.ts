@@ -3,6 +3,7 @@ import { Post } from '../../interfaces/post';
 
 @Component({
   selector: 'app-post-item',
+  standalone: true, 
   imports: [],
   templateUrl: './post-item.html',
   styleUrl: './post-item.css',

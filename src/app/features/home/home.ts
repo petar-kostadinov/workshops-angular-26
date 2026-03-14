@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { ThemesListComponent } from './themes-list/themes-list';
-import { RecentPostsComponents } from './recent-posts/recent-posts';
 
 @Component({
   selector: 'app-home',
-  imports: [ThemesListComponent, RecentPostsComponents],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

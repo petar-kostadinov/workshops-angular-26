@@ -10,6 +10,4 @@ import { HomeComponent } from './features/home/home';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('workshops-angular-26');
-}
+export class App {}

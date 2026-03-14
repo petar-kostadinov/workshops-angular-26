@@ -3,6 +3,7 @@ import { Theme } from '../../interfaces/theme';
 
 @Component({
   selector: 'app-theme-item',
+  standalone: true, 
   imports: [],
   templateUrl: './theme-item.html',
   styleUrl: './theme-item.css',

@@ -3,9 +3,9 @@ export interface Post {
     text: string,
     userId: {
         username: string;
-    },
+    }
     themeId: {
         themeName: string;
-    },
+    }
     created_at: string;
 }
