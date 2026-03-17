@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Theme } from '../../interfaces/theme';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-theme-item',
   standalone: true, 
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './theme-item.html',
   styleUrl: './theme-item.css',
 })

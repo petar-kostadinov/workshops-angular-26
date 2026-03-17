@@ -2,7 +2,6 @@
 @import url('styles/layout.css');
 @import url('styles/typography.css');
 @import url('styles/responsive.css');
-@import url('styles/theme-content.css');
 
 body {
     max-width: 1366px;
