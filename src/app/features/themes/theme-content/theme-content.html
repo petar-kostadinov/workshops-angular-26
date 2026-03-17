@@ -38,11 +38,11 @@
         </div>
         }
         <div class="answer-comment">
-            <p><span>currentUser</span> comment:</p>
+            <p><span>{{ currentUserName() }}</span> comment:</p>
             <div class="answer">
-                <form>
+                <form (ngSubmit)="onPostComment()">
                     <textarea name="postText" id="comment" cols="30" rows="10"></textarea>
-                    <button>Post</button>
+                    <button type="submit">Post</button>
                 </form>
             </div>
         </div>

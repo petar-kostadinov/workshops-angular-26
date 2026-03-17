@@ -1,24 +1,29 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef, computed } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../core/services/api';
 import { Theme } from '../../../shared/interfaces/theme';
 import { Post } from '../../../shared/interfaces/post';
+import { AuthService } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-theme-content',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './theme-content.html',
   styleUrl: './theme-content.css',
 })
 export class ThemeContentComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private apiService = inject(ApiService);
+  private authService = inject(AuthService);
   private cd = inject(ChangeDetectorRef);
 
   theme: Theme | null = null;
   posts: Post[] = [];
   commentText = "";
   themeId = "";
+
+  currentUserName = computed(() => this.authService.currentUser()?.username ?? 'Anonymus');
 
   ngOnInit(): void {
     this.themeId = this.route.snapshot.params["themeId"];
@@ -36,5 +41,10 @@ export class ThemeContentComponent implements OnInit {
         this.cd.detectChanges();
       });
     });
+  }
+
+  onPostComment(): void {
+    console.log('Posting comment', this.commentText);
+    this.commentText = '';
   }
 }

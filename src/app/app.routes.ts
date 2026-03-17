@@ -7,6 +7,7 @@ import { ThemeContentComponent } from './features/themes/theme-content/theme-con
 import { authGuard } from './core/guards/auth-guard';
 import { ProfileComponent } from './features/profile/profile';
 import { NotFoundComponent } from './features/not-found/not-found';
+import { NewThemeComponent } from './features/themes/new-theme/new-theme';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -16,8 +17,10 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent },
 
-    { path: "themes", component: Themes, canActivate: [authGuard] },
+    { path: "themes", component: Themes },
     { path: "themes/:themeId", component: ThemeContentComponent },
+    { path: "add-theme", component: NewThemeComponent, canActivate: [authGuard] },
+
 
     { path: "profile", component: ProfileComponent, canActivate: [authGuard] },
     { path: "**", component: NotFoundComponent},
