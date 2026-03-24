@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth';
 import { UserService } from '../../../core/services/user';
-import { User, UserWithCredentials } from '../../../shared/interfaces/user';
+import { User } from '../../../shared/interfaces/user';
 import { Router, RouterLink } from "@angular/router";
 
 @Component({
@@ -38,7 +38,7 @@ export class RegisterComponent {
       return;
     }
 
-    const newUser: UserWithCredentials = {
+    const newUser = {
       _id: this.generateId(),
       username: this.username,
       email: this.email,
@@ -46,8 +46,8 @@ export class RegisterComponent {
       password: this.password
     }
 
-    const sessionUser = this.userService.register(newUser);
-    this.authService.setSession(sessionUser);
+    //const sessionUser = this.userService.register(newUser);
+    //this.authService.setSession(sessionUser);
     this.router.navigate(['/themes']);
   }
 

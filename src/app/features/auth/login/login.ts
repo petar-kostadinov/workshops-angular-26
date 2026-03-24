@@ -18,7 +18,7 @@ export class LoginComponent {
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, emailValidator()]],
-    passeord: ['', [Validators.required, Validators.minLength(5)]],
+    password: ['', [Validators.required, Validators.minLength(5)]],
   });
 
   isLoading = false;

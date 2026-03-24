@@ -19,7 +19,7 @@ export class AuthService {
   private user = signal<User | null>(null);
 
   isLoggedIn = computed(() => this.user() !== null);
-  curentUser = computed(() => this.user());
+  currentUser = computed(() => this.user());
 
   login(credentials: LoginCredentials): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/login`, credentials, { withCredentials: true });
