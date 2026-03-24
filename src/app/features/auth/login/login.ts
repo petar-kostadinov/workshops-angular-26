@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { emailValidator } from '../../../shared/validators/email.validator';
 import { InputErrorDirective } from "../../../shared/directives/input-error";
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, InputErrorDirective],
+  imports: [ReactiveFormsModule, FormsModule,  RouterLink, InputErrorDirective],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

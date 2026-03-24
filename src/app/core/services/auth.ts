@@ -1,5 +1,4 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { UserService } from './user';
 import {
   LoginCredentials,
   ProfileUpdateData,
