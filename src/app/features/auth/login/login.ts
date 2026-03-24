@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { emailValidator } from '../../../shared/validators/email.validator';
 import { InputErrorDirective } from "../../../shared/directives/input-error";
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, RouterLink, InputErrorDirective],
+  imports: [ReactiveFormsModule, RouterLink, InputErrorDirective],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -39,7 +39,7 @@ export class LoginComponent {
       next: (user) => {
         this.isLoading = false;
         if (user) {
-          this.router.navigate('/themes');
+          this.router.navigate(['/themes']);
         } else {
           this.errorMessage = 'Invalid email or password';
         }
