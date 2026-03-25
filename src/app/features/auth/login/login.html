@@ -9,7 +9,6 @@
         ></label>
         <input
           appInputError
-          class="input-error"
           type="email"
           name="email"
           id="email"
@@ -21,8 +20,7 @@
         <p class="error">Email is not valid</p>
       }
 
-      <p class="error">Email is required!</p>
-
+      
       <p class="field field-icon">
         <label for="password"
           ><span><i class="fas fa-lock"></i></span
@@ -36,7 +34,9 @@
           formControlName="password"
         />
       </p>
-      @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+      @if (
+        loginForm.get('password')?.touched && loginForm.get('password')?.invalid
+      ) {
         <p class="error">Password must be at least characters</p>
       }
 

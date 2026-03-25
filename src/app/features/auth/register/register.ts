@@ -10,10 +10,11 @@ import { AuthService } from '../../../core/services/auth';
 import { Router, RouterLink } from '@angular/router';
 import { emailValidator } from '../../../shared/validators/email.validator';
 import { passwordsMatchValidator } from '../../../shared/validators/passwords-match.validator';
+import { InputErrorDirective } from '../../../shared/directives/input-error';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, FormsModule, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink, InputErrorDirective],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
@@ -29,7 +30,7 @@ export class RegisterComponent {
     passwords: this.fb.group(
       {
         password: ['', [Validators.required, Validators.minLength(5)]],
-        repassword: ['', [Validators.required]],
+        rePassword: ['', [Validators.required]],
       },
       { validators: passwordsMatchValidator },
     ),

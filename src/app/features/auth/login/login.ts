@@ -37,12 +37,9 @@ export class LoginComponent {
 
     this.authService.login({ email, password }).subscribe({
       next: (user) => {
+        this.authService.setSession(user);
         this.isLoading = false;
-        if (user) {
-          this.router.navigate(['/themes']);
-        } else {
-          this.errorMessage = 'Invalid email or password';
-        }
+        this.router.navigate(['/themes']);
       },
       error: (err) => {
         this.isLoading = false;

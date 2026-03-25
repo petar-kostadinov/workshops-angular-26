@@ -5,7 +5,7 @@ export function passwordsMatchValidator(control: AbstractControl): ValidationErr
     const rePassword = control.get('rePassword');
 
     if (password?.value !== rePassword?.value) {
-        return { passwordsMismatch: true }
+        return { PasswordsMissmatch: true }
     }
 
     return null;

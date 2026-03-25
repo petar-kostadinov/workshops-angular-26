@@ -44,7 +44,7 @@ export class AuthService {
     this.user.set(user);
   }
 
-  clearSession(user: User): void {
+  clearSession(): void {
     this.user.set(null);
   }
 }
