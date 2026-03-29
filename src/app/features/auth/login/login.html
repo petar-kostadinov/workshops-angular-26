@@ -20,7 +20,6 @@
         <p class="error">Email is not valid</p>
       }
 
-      
       <p class="field field-icon">
         <label for="password"
           ><span><i class="fas fa-lock"></i></span
@@ -42,10 +41,6 @@
 
       @if (loginForm.touched && loginForm.invalid) {
         <p class="error">You can,t continue until you provide valid data</p>
-      }
-
-      @if (errorMessage) {
-        <p class="error">{{ errorMessage }}</p>
       }
 
       <button type="submit" [disabled]="loginForm.invalid || isLoading">

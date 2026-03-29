@@ -3,6 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../core/services/api';
 import { InputErrorDirective } from '../../../shared/directives/input-error';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   selector: 'app-new-theme',
@@ -16,10 +17,10 @@ export class NewThemeComponent {
   themeName = '';
   postText = '';
   isLoading = false;
-  errorMessage = '';
 
   private router = inject(Router);
   private apiService = inject(ApiService);
+  private notifService = inject(NotificationService);
 
   onSubmit(): void {
     if (this.themeForm.invalid) {
@@ -27,7 +28,6 @@ export class NewThemeComponent {
     }
 
     this.isLoading = true;
-    this.errorMessage = '';
 
     this.apiService
       .createTheme({
@@ -37,12 +37,12 @@ export class NewThemeComponent {
       .subscribe({
         next: (theme) => {
           this.isLoading = false;
+          this.notifService.showSuccess('Theme created successful');
           this.router.navigate(['/themes', theme._id]);
         },
         error: (err) => {
-        this.isLoading = false;
-        this.errorMessage = err.error?.message || 'Failed to create new theme. Try again';
-      },
+          this.isLoading = false;
+        },
       });
   }
 

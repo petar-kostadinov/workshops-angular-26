@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 import { emailValidator } from '../../../shared/validators/email.validator';
 import { passwordsMatchValidator } from '../../../shared/validators/passwords-match.validator';
 import { InputErrorDirective } from '../../../shared/directives/input-error';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   selector: 'app-register',
@@ -19,8 +20,9 @@ import { InputErrorDirective } from '../../../shared/directives/input-error';
   styleUrl: './register.css',
 })
 export class RegisterComponent {
-  private router = inject(Router);
   private authService = inject(AuthService);
+  private notifService = inject(NotificationService);
+  private router = inject(Router);
   private fb = inject(FormBuilder);
 
   registerForm: FormGroup = this.fb.group({
@@ -37,7 +39,6 @@ export class RegisterComponent {
   });
 
   isLoading = false;
-  errorMessage = '';
 
   get passwordsGroup(): FormGroup {
     return this.registerForm.get('passwords') as FormGroup;
@@ -50,7 +51,6 @@ export class RegisterComponent {
     }
 
     this.isLoading = true;
-    this.errorMessage = '';
 
     const { username, email, tel, passwords } = this.registerForm.value;
 
@@ -65,12 +65,12 @@ export class RegisterComponent {
       next: (user) => {
         this.authService.setSession(user);
         this.isLoading = false;
+        this.notifService.showSuccess('Register successful');
         this.router.navigate(['/themes']);
       },
       error: (err) => {
         this.isLoading = false;
-        this.errorMessage = err.error?.message || 'Registration failed. Try again';
       },
-    })
+    });
   }
 }

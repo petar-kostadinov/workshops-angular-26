@@ -1,18 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { emailValidator } from '../../../shared/validators/email.validator';
-import { InputErrorDirective } from "../../../shared/directives/input-error";
+import { InputErrorDirective } from '../../../shared/directives/input-error';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, FormsModule,  RouterLink, InputErrorDirective],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink, InputErrorDirective],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class LoginComponent {
   private authService = inject(AuthService);
+  private notifService = inject(NotificationService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
 
@@ -22,7 +30,6 @@ export class LoginComponent {
   });
 
   isLoading = false;
-  errorMessage = '';
 
   onLogin(): void {
     if (this.loginForm.invalid) {
@@ -31,7 +38,6 @@ export class LoginComponent {
     }
 
     this.isLoading = true;
-    this.errorMessage = '';
 
     const { email, password } = this.loginForm.value;
 
@@ -39,11 +45,11 @@ export class LoginComponent {
       next: (user) => {
         this.authService.setSession(user);
         this.isLoading = false;
+        this.notifService.showSuccess('Login successful');
         this.router.navigate(['/themes']);
       },
       error: (err) => {
         this.isLoading = false;
-        this.errorMessage = err.error?.message || 'Login failed. Try again';
       },
     });
   }
