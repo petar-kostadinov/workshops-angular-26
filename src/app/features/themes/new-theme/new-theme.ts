@@ -38,7 +38,7 @@ export class NewThemeComponent {
         next: (theme) => {
           this.isLoading = false;
           this.notifService.showSuccess('Theme created successful');
-          this.router.navigate(['/themes', theme._id]);
+          this.router.navigate(['/themes']);
         },
         error: (err) => {
           this.isLoading = false;

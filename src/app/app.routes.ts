@@ -1,27 +1,58 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './features/home/home';
-import { Themes } from './features/themes/themes';
-import { LoginComponent } from './features/auth/login/login';
-import { RegisterComponent } from './features/auth/register/register';
-import { ThemeContentComponent } from './features/themes/theme-content/theme-content';
 import { authGuard } from './core/guards/auth-guard';
-import { ProfileComponent } from './features/profile/profile';
-import { NotFoundComponent } from './features/not-found/not-found';
-import { NewThemeComponent } from './features/themes/new-theme/new-theme';
 
 export const routes: Routes = [
-    { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-    { path: "home", component: HomeComponent },
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./features/home/home').then((m) => m.HomeComponent),
+  },
 
-    { path: "login", component: LoginComponent },
-    { path: "register", component: RegisterComponent },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login/login').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./features/auth/register/register').then(
+        (m) => m.RegisterComponent,
+      ),
+  },
 
-    { path: "themes", component: Themes },
-    { path: "themes/:themeId", component: ThemeContentComponent },
-    { path: "add-theme", component: NewThemeComponent, canActivate: [authGuard] },
+  {
+    path: 'themes',
+    loadComponent: () =>
+      import('./features/themes/themes').then((m) => m.Themes),
+  },
+  {
+    path: 'themes/:themeId',
+    loadComponent: () =>
+      import('./features/themes/theme-content/theme-content').then(
+        (m) => m.ThemeContentComponent,
+      ),
+  },
+  {
+    path: 'add-theme',
+    loadComponent: () =>
+      import('./features/themes/new-theme/new-theme').then(
+        (m) => m.NewThemeComponent,
+      ),
+    canActivate: [authGuard],
+  },
 
-
-    { path: "profile", component: ProfileComponent, canActivate: [authGuard] },
-    { path: "**", component: NotFoundComponent},
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./features/profile/profile').then((m) => m.ProfileComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./features/not-found/not-found').then((m) => m.NotFoundComponent),
+  },
 ];
